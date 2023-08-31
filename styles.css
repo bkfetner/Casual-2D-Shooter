@@ -25,6 +25,11 @@ body, html {
   background-color: grey;
 }
 
+.content .enemy {
+  position: absolute;
+  background-color: blue;
+}
+
 .content .playerCharacter {
   position: absolute;
   background-color: red;
