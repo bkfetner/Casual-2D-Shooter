@@ -22,12 +22,17 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: grey;
+  background-color: lightgray;
 }
 
 .content .enemy {
   position: absolute;
   background-color: blue;
+}
+
+.content .bullet {
+  position: absolute;
+  background-color: green;
 }
 
 .content .playerCharacter {
