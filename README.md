@@ -26,7 +26,20 @@ While this prototype demonstrates the core mechanics of the game, there are seve
 
 - **Code Organization and OOP**: Refactor the codebase to follow better organization practices and potentially incorporate object-oriented programming (OOP) principles for cleaner and more maintainable code.
 
-## Getting Started
+## Play It Now
+
+Click [here](https://dev.dw0a0hi9lw2ic.amplifyapp.com/) to play the game.
+
+### Instructions
+
+1. Launch the game by clicking the link above.
+2. Use the arrow keys to control your red square.
+3. Refresh to restart.
+3. Have fun!
+
+Feel free to contribute and provide feedback. Enjoy!
+
+## Set It Up On Your Machine
 
 To try out the prototype, follow these steps:
 
