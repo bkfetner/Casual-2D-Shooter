@@ -37,7 +37,10 @@ body, html {
 
 .content .playerCharacter {
   position: absolute;
-  background-color: red;
+}
+
+.content .gameover {
+  position: absolute;
 }
 
 .p {
