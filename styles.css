@@ -28,6 +28,7 @@ body, html {
 .content .enemy {
   position: absolute;
   background-color: blue;
+  border: 1px solid black;
 }
 
 .content .bullet {

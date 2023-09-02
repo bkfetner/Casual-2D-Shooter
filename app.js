@@ -1,6 +1,6 @@
 const content = document.getElementById('content');
 let bullets = [];
-const bulletFireRate = 250;
+const bulletFireRate = 200;
 let bulletcount = 0;
 let lastTimeBulletFired = Date.now();
 let lastBulletDirection = 'up';
@@ -305,13 +305,26 @@ function updateEnemies() {
   // console.log(enemies);
 }
 
-function evaluateEnemyVsEnemyCollision() {
-  const enemies = document.querySelectorAll('.enemy');
+function shuffleArray(arr) {
+  for(let i = 0; i < arr.length; i++) {
+    let rand = Math.floor(Math.random() * arr.length);
+    let hold = arr[i];
+    arr[i] = arr[rand];
+    arr[rand] = hold;
+  }
+}
 
-  enemies.forEach((enemyOne, enemyOneIndex) => {
+function evaluateEnemyVsEnemyCollision() {
+  const startEvalEvE = Date.now();
+  const enemies = document.querySelectorAll('.enemy');
+  shuffleArray(enemies);
+
+  for(let i = 0; i < enemies.length; i++) {
+    enemyOne = enemies[i];
     const enemyOneId = enemyOne.id;
 
-    enemies.forEach((enemyTwo, enemyTwoIndex) => {
+    for(let j = 0; j < enemies.length; j++) {
+      enemyTwo = enemies[j];
       const enemyTwoId = enemyTwo.id;
 
       if(enemyOneId !== enemyTwoId) {
@@ -380,8 +393,12 @@ function evaluateEnemyVsEnemyCollision() {
         enemyTwo.style.top = currentEnemyTopTwo + 'vw';
         enemyTwo.style.left = currentEnemyLeftTwo + 'vw';
       }
-    })
-  })
+    }
+
+    if(Date.now() - startEvalEvE > 12) {
+      break;
+    };
+  }
 }
 
 function evaluateEnemyVsBulletCollision() {
@@ -427,9 +444,14 @@ function evaluateEnemyVsBulletCollision() {
 }
 
 function evaluateCollision() {
+  const startColTime = Date.now();
   evaluatePlayerCharacterCollision();
+  const playerColTime = Date.now();
   evaluateEnemyVsBulletCollision();
+  const EvBColTime = Date.now();
   evaluateEnemyVsEnemyCollision();
+  const EvEColTime = Date.now();
+  // console.log("Player: ", (playerColTime - startColTime), ", EvB: ", (EvBColTime - playerColTime), ", EvE: ", (EvEColTime - EvBColTime));
 }
 
 function displayGameOver() {
@@ -451,7 +473,7 @@ function createNewGameCycle() {
   updateEnemies();
   evaluateCollision();
 
-  console.log(playerHealth);
+  // console.log(playerHealth);
   if(playerHealth <= 0) {
     clearInterval(interval);
     displayGameOver();
