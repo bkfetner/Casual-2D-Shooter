@@ -32,10 +32,10 @@ function addPlayerCharacter() {
   playerCharacter.style.left = currentPlayerLeft + 'vw';
 }
 
-function updatePlayerCharacterPosition() {
-  playerCharacter.style.top = currentPlayerTop + 'vw';
-  playerCharacter.style.left = currentPlayerLeft + 'vw';
-}
+// function updatePlayerCharacterPosition() {
+//   playerCharacter.style.top = currentPlayerTop + 'vw';
+//   playerCharacter.style.left = currentPlayerLeft + 'vw';
+// }
 
 function movePlayerCharacter() {
   const playerCharacter = document.querySelector('.playerCharacter');
@@ -484,8 +484,67 @@ addPlayerCharacter();
 
 let interval = setInterval(createNewGameCycle, 16.666);
 
-document.addEventListener('keydown', keydown)
-document.addEventListener('keyup', keyup)
+document.addEventListener('keydown', keydown);
+document.addEventListener('keyup', keyup);
+document.addEventListener('mousedown', mousedown);
+document.addEventListener('touchstart', touchstart);
+document.addEventListener('mouseup', stopMovement);
+document.addEventListener('touchend', stopMovement);
+
+function mousedown(e) {
+  const screenWidth = window.innerWidth;
+  let x = e.clientX;
+  let y = e.clientY;
+  y = (y / screenWidth) * 100;
+  x = (x / screenWidth) * 100;  
+  setDirectionBasedOnCoordinatesPressed(x, y);
+}
+
+function touchstart(e) {
+  const screenWidth = window.innerWidth;
+  const touch = e.touches[0];
+  let x = touch.clientX;
+  let y = touch.clientY;
+  y = (y / screenWidth) * 100;
+  x = (x / screenWidth) * 100;
+  setDirectionBasedOnCoordinatesPressed(x, y);
+}
+
+function setDirectionBasedOnCoordinatesPressed(x, y) {
+  const playerX = currentPlayerLeft + 1;
+  const playerY = currentPlayerTop + 1;
+  const angleRadians = Math.atan2(y - playerY, x - playerX);
+  const angleDegrees = angleRadians * (180 / Math.PI);
+
+  if(angleDegrees >= -22.5 && angleDegrees < 22.5) {
+    rightKey = true;
+  } else if(angleDegrees >= -67.5 && angleDegrees < -22.5) {
+    rightKey = true;
+    upKey = true;
+  } else if(angleDegrees >= -112.5 && angleDegrees < -67.5) {
+    upKey = true;
+  } else if(angleDegrees >= -157.5 && angleDegrees < -112.5) {
+    upKey = true;
+    leftKey = true;
+  } else if((angleDegrees >= -180 && angleDegrees < -157.5) || (angleDegrees >= 157.5 && angleDegrees <= 180)) {
+    leftKey = true;
+  } else if(angleDegrees >= 112.5 && angleDegrees < 157.5) {
+    leftKey = true;
+    downKey = true;
+  } else if(angleDegrees >= 67.5 && angleDegrees < 112.5) {
+    downKey = true;
+  } else if(angleDegrees >= 22.5 && angleDegrees < 67.5) {
+    downKey = true;
+    rightKey = true;
+  }
+}
+
+function stopMovement() {
+  upKey = false;
+  rightKey = false;
+  downKey = false;
+  leftKey = false;
+}
 
 function keydown(e) {
   switch(e.key) {
