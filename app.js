@@ -487,7 +487,7 @@ let interval = setInterval(createNewGameCycle, 16.666);
 document.addEventListener('keydown', keydown);
 document.addEventListener('keyup', keyup);
 document.addEventListener('mousedown', mousedown);
-document.addEventListener('touchstart', touchstart);
+document.addEventListener('touchstart', touchstart, {passive: false});
 document.addEventListener('mouseup', stopMovement);
 document.addEventListener('touchend', stopMovement);
 
@@ -501,6 +501,8 @@ function mousedown(e) {
 }
 
 function touchstart(e) {
+  e.preventDefault();
+
   const screenWidth = window.innerWidth;
   const touch = e.touches[0];
   let x = touch.clientX;

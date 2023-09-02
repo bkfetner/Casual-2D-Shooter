@@ -14,7 +14,7 @@ The inspiration for this project comes from the game "Vampire Survivor," which p
 
 ## Planned Improvements
 
-While this prototype demonstrates the core mechanics of the game, there are several areas for improvement that you can consider working on:
+While this prototype demonstrates the core mechanics of the game, there are several areas for improvement:
 
 - **Scrolling Backgrounds**: Implement scrolling backgrounds to add depth and visual interest to the game world.
 
@@ -37,8 +37,6 @@ Click [here](https://dev.dw0a0hi9lw2ic.amplifyapp.com/) to play the game.
 3. Refresh to restart.
 3. Have fun!
 
-Feel free to contribute and provide feedback. Enjoy!
-
 ## Set It Up On Your Machine
 
 To try out the prototype, follow these steps:
@@ -47,9 +45,30 @@ To try out the prototype, follow these steps:
 2. Open the `index.html` file in your web browser.
 3. Play around with the controls and explore the current gameplay features.
 
-## Contributing
+## Todo
 
-Contributions are more than welcome! If you have ideas for improvements, new features, or bug fixes, feel free to submit a pull request.
+Here's a list of tasks that I'm looking to complete:
+
+### High Priority
+
+- [ ] Reorganization of code, moving to a more OOP approach.
+- [ ] Create more optimal collision detection.
+- [ ] Rework how I manage gameplay cycles.
+
+### Medium Priority
+
+- [ ] Create a scrolling background to emulate a bigger play area.
+
+### Low Priority
+
+- [ ] Add visual que for when enemies die.
+- [ ] Add visual que for when player takes damage.
+- [ ] Make player health status more visible based on player position.
+
+### Future Enhancements
+
+- [ ] Add stationary objects, like walls and such.
+- [ ] Adding graphics and sound based around a thematic concept.
 
 ## License
 
