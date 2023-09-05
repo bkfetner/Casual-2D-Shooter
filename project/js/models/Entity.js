@@ -1,5 +1,5 @@
 class Entity {
-  constructor(top, left, width, height, movementSpeed, movementAngle) {
+  constructor(top, left, width, height, movementSpeed, movementAngle, color, className) {
     this.top = top;
     this.left = left;
     this.width = width;
@@ -7,6 +7,8 @@ class Entity {
     this.movementSpeed = movementSpeed;
     this.movementAngle = movementAngle; // In degrees, 0 to 360, Trig Unit Circle
     this.movementAngle %= 360;
+    this.color = color;
+    this.className = className;
   }
 
   getTop() {
@@ -73,6 +75,22 @@ class Entity {
   modifyMovementAngle(degrees) {
     this.movementAngle += degrees;
     this.movementAngle %= 360;
+  }
+
+  getColor() {
+    return this.color();
+  }
+
+  setColor(color) {
+    this.color = color;
+  }
+
+  getClassName() {
+    return this.className;
+  }
+
+  setClassName(className) {
+    this.className = className;
   }
 
   move() {

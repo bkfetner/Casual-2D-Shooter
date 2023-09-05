@@ -1,6 +1,11 @@
 class PlayerCharacter extends Entity {
-  constructor(top, left, width, height, movementSpeed, movementAngle, maxHealth) {
-    super(top, left, width, height, movementSpeed, movementAngle);
+  constructor() {
+    super(49,28.125,2,2,2,0,'red','pc');
+    this.maxHealth = 100;
+  }
+
+  constructor(top, left, width, height, movementSpeed, movementAngle, color, maxHealth) {
+    super(top, left, width, height, movementSpeed, movementAngle, color);
     this.maxHealth = maxHealth;
   }
 
